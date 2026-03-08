@@ -58,6 +58,7 @@ public class VehicleWaterTank : MonoBehaviour
     Vector2 lastDropPos;
     bool hasLastPos;
     float lastDropTime;
+    bool wasLastExtinguish;
 
     // Isometric Z As Y projeksiyon sabitleri
     float yScale; // Y sıkıştırmasını geri açar (cellSize.x / cellSize.y = 2f)
@@ -156,6 +157,9 @@ public class VehicleWaterTank : MonoBehaviour
     void StopExtinguishing()
     {
         isExtinguishing = false;
+        wasLastExtinguish = true;
+        ExtinguishAlongMovement(); // Son pozisyon için de hasar uygula
+        wasLastExtinguish = false;
         hasLastPos = false;
     }
 
@@ -218,7 +222,7 @@ public class VehicleWaterTank : MonoBehaviour
 
         float segmentLength = Vector2.Distance(p0, p1);
         float passedTime = Time.time - lastDropTime;
-        if (segmentLength < 0.2f && passedTime < .1f) return;
+        if ((segmentLength < 0.2f && passedTime < .1f) || wasLastExtinguish) return;
         lastDropTime = Time.time;
 
         // p0 ve p1'i flat uzaya çevir (Z=0 olduğu için zToY terimi sıfır)
