@@ -13,8 +13,16 @@ MonoBehaviour:
   m_Name: BD_Water
   m_EditorClassIdentifier: Assembly-CSharp::BiomeData
   biomeName: Water
+  isWater: 1
   fuelValue: 0
   fireSpreadResistance: 1
-  isWater: 1
+  maxHeat: 0.7
+  burnRate: 0.15
+  extinguishResistance: 0.8
+  dryingRate: 0.05
+  canRageInWind: 0
+  canRageWithFuel: 0
+  minFuelForRaging: 1
+  ragingMaxDuration: 2
   canSpawnVegetation: 0
   vegetationList: []

@@ -13,8 +13,17 @@ MonoBehaviour:
   m_Name: BD_Forest
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   biomeName: Forest
+  isWater: 0
   fuelValue: 2
-  fireSpreadResistance: 0.4
+  fireSpreadResistance: 0.1
+  maxHeat: 0.9
+  burnRate: 0.08
+  extinguishResistance: 1.2
+  dryingRate: 0.05
+  canRageInWind: 0
+  canRageWithFuel: 0
+  minFuelForRaging: 1
+  ragingMaxDuration: 2
   canSpawnVegetation: 1
   vegetationList:
   - prefab: {fileID: 3843036604728709825, guid: 999350436d042004ab0de4f6087e210f, type: 3}

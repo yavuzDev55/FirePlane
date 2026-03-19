@@ -45,9 +45,9 @@ public class VehicleWaterTank : MonoBehaviour
 
     private struct PendingExtinguish
     {
-        public Vector3 worldPos;
+        public Vector3Int cellPos;
         public float timeToExecute;
-        public float damage;
+        public float extinguishAmount;
     }
 
     private List<PendingExtinguish> _pendingExtinguishes = new();
@@ -264,9 +264,9 @@ public class VehicleWaterTank : MonoBehaviour
 
                 _pendingExtinguishes.Add(new PendingExtinguish
                 {
-                    worldPos = groundTilemap.CellToWorld(cell),
+                    cellPos = cell,
                     timeToExecute = Time.time + delay,
-                    damage = damage * passedTime * extinguishingPerSecond
+                    extinguishAmount = damage * passedTime * extinguishingPerSecond
                 });
 
                 debugHits.Add(new DebugWaterHit
@@ -290,9 +290,9 @@ public class VehicleWaterTank : MonoBehaviour
             if (Time.time >= _pendingExtinguishes[i].timeToExecute)
             {
                 // Zamanı geldi! Hasarı uygula
-                fireManager.ApplyExtinguisherDamageToCell(
-                    _pendingExtinguishes[i].worldPos,
-                    _pendingExtinguishes[i].damage
+                fireManager.ApplyExtinguish(
+                    _pendingExtinguishes[i].cellPos,
+                    _pendingExtinguishes[i].extinguishAmount
                 );
 
                 // Listeden kaldır

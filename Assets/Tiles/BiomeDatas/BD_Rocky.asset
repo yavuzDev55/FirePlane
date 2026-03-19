@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: BD_Rocky
   m_EditorClassIdentifier: Assembly-CSharp::BiomeData
   biomeName: Rocky
+  isWater: 0
   fuelValue: 0
   fireSpreadResistance: 1
+  maxHeat: 0
+  burnRate: 0
+  extinguishResistance: 0.6
+  dryingRate: 0.05
+  canRageInWind: 0
+  canRageWithFuel: 0
+  minFuelForRaging: 1
+  ragingMaxDuration: 2
   canSpawnVegetation: 0
   vegetationList: []

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BurningTile
   m_EditorClassIdentifier: Assembly-CSharp::CustomTile
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 0.5115533, b: 0, a: 0.60784316}
+  m_Color: {r: 1, g: 0.29488194, b: 0, a: 0.78431374}
   m_Transform:
     e00: 1
     e01: 0

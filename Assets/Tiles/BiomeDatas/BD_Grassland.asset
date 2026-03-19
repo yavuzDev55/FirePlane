@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: BD_Grassland
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   biomeName: Grassland
-  fuelValue: 1
-  fireSpreadResistance: 0.6
+  isWater: 0
+  fuelValue: 1.5
+  fireSpreadResistance: 0.2
+  maxHeat: 0.7
+  burnRate: 0.15
+  extinguishResistance: 0.8
+  dryingRate: 0.05
+  canRageInWind: 0
+  canRageWithFuel: 0
+  minFuelForRaging: 1
+  ragingMaxDuration: 2
   canSpawnVegetation: 0
   vegetationList: []

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 758a356169d972f4bbb7bb4ed767e6ee, type: 3}
-  m_Name: IgniteMarkerTile
+  m_Name: IgnitingTile
   m_EditorClassIdentifier: Assembly-CSharp::CustomTile
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 0.5781302, b: 0, a: 0.78431374}
+  m_Color: {r: 1, g: 0.87228465, b: 0, a: 0.78431374}
   m_Transform:
     e00: 1
     e01: 0
