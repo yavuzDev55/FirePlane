@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
@@ -306,7 +305,7 @@ public class FireManager : MonoBehaviour
             // Söndürme kontrolü
             if (data.extinguishPoints >= biome.extinguishResistance)
             {
-                TransitionToExtinguished(cellPos);
+                TransitionToExtinguished(cellPos, false);
                 return;
             }
             return;
@@ -327,33 +326,19 @@ public class FireManager : MonoBehaviour
             }
             else
             {
-                data.state = FireState.ASH;
-                activeBurningCells.Remove(cellPos);
-                cellBurnTimers.Remove(cellPos);
-                cellExtinguishHealth.Remove(cellPos);
-                ExtinguishFlammablesInCell(cellPos, true);
-                UpdateVisual(cellPos);
+                TransitionToExtinguished(cellPos, true);
                 return;
             }
 
             // Söndürme kontrolü
             if (data.extinguishPoints >= biome.extinguishResistance)
             {
-                TransitionToExtinguished(cellPos);
+                TransitionToExtinguished(cellPos, false);
                 return;
             }
 
             // Check raging conditions
             CheckRagingConditions(cellPos, data, biome);
-
-            // Complete burnout
-            if (data.fuel <= 0 && data.heat <= 0)
-            {
-                data.state = FireState.ASH;
-                activeBurningCells.Remove(cellPos);
-                UpdateVisual(cellPos);
-                return;
-            }
 
             return;
         }
@@ -379,7 +364,7 @@ public class FireManager : MonoBehaviour
             float ragingMultiplier = 1.5f;
             if (data.extinguishPoints >= biome.extinguishResistance * ragingMultiplier)
             {
-                TransitionToExtinguished(cellPos);
+                TransitionToExtinguished(cellPos, false);
                 return;
             }
 
@@ -557,12 +542,10 @@ public class FireManager : MonoBehaviour
     {
         var data = GetOrCreateCellData(cellPos);
         BiomeData biome = GetBiomeData(cellPos);
-
         if (data.state == FireState.IGNITING || data.state == FireState.BURNING || data.state == FireState.RAGING)
         {
             float neededToExtinguish = Mathf.Max(0,
                 biome.extinguishResistance - data.extinguishPoints);
-
             float extinguishUsed = Mathf.Min(extinguishAmount, neededToExtinguish);
 
             float remainingForWetness = extinguishAmount - extinguishUsed;
@@ -577,40 +560,34 @@ public class FireManager : MonoBehaviour
         }
         else if(data.state == FireState.NORMAL || data.state == FireState.WET)
         {
+            if (!CanCellCatchFire(cellPos)) return;
             data.wetness = Mathf.Min(1f, data.wetness + extinguishAmount);
         }
     }
 
-    void TransitionToExtinguished(Vector3Int cellPos)
+    void TransitionToExtinguished(Vector3Int cellPos, bool burnout)
     {
         if (!cellData.TryGetValue(cellPos, out var data))
             return;
 
-        Debug.Log("Söndürüldü");
-        data.state = FireState.WET;
-        data.extinguishPoints = 0f;
-        data.heat = 0f;
+        if (burnout)
+        { 
+            data.state = FireState.ASH;
+        }
+        else
+        {
+            data.state = FireState.WET;
+            data.extinguishPoints = 0f;
+            data.heat = 0f;
+        }
 
         UpdateVisual(cellPos);
         activeBurningCells.Remove(cellPos);
         cellIgnitionResistance.Remove(cellPos);
 
-        ExtinguishFlammablesInCell(cellPos, false);
-    }
+        ExtinguishFlammablesInCell(cellPos, burnout);
 
-    // Removes fire from a cell (burnout or extinguish)
-    public void ExtinguishCell(Vector3Int cellPos, bool burntOut)
-    {
-        fireStateTilemap.SetTile(cellPos, burntOut ? ashTile : null);
-
-        activeBurningCells.Remove(cellPos);
-        cellBurnTimers.Remove(cellPos);
-        cellIgnitionResistance.Remove(cellPos);
-        cellExtinguishHealth.Remove(cellPos);
-
-        ExtinguishFlammablesInCell(cellPos, burntOut);
-
-        if (burntOut) ashCellCountCache++;
+        if(burnout) ashCellCountCache++;
     }
 
     void UpdateVisual(Vector3Int cellPos)

@@ -176,6 +176,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7477236945664735051, guid: ac2366e2869cf034bac9b8e0a60df6a1, type: 3}
+      propertyPath: maxDamage
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477236945664735051, guid: ac2366e2869cf034bac9b8e0a60df6a1, type: 3}
+      propertyPath: minDamage
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477236945664735051, guid: ac2366e2869cf034bac9b8e0a60df6a1, type: 3}
+      propertyPath: halfLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477236945664735051, guid: ac2366e2869cf034bac9b8e0a60df6a1, type: 3}
       propertyPath: fireManager
       value: 
       objectReference: {fileID: 249196706}
@@ -264,8 +276,8 @@ MonoBehaviour:
   ragingTile: {fileID: 11400000, guid: 2c32b76584be22c4d8cc933f68643912, type: 2}
   ashTile: {fileID: 11400000, guid: 7998add552768ae45a4de5a2dc473bbf, type: 2}
   wetTile: {fileID: 11400000, guid: 08c7d6a0b5cf31d48bf9aca79d247cf8, type: 2}
-  spreadCheckInterval: 0.5
-  updateInterval: 0.25
+  spreadCheckInterval: 0.2
+  updateInterval: 0.1
   baseCellMaxBurnTime: 20
   baseHeatPerNeighbor: 5
   diagonalHeatMultiplier: 0.5
@@ -128425,7 +128437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1668174848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128516,14 +128528,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 533394667776179156, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 664562028541009598, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.55
-      objectReference: {fileID: 0}
     - target: {fileID: 2506087323225221849, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -128564,10 +128568,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3343163960984428484, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.55
-      objectReference: {fileID: 0}
     - target: {fileID: 4405228969276889187, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
       propertyPath: m_Name
       value: Helicopter
@@ -128578,11 +128578,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4942017914454007537, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
       propertyPath: maxDamage
-      value: 150
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4942017914454007537, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
       propertyPath: minDamage
-      value: 50
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942017914454007537, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
+      propertyPath: halfLength
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4942017914454007537, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
       propertyPath: fireManager
@@ -128596,6 +128600,10 @@ PrefabInstance:
       propertyPath: groundTilemap
       value: 
       objectReference: {fileID: 844698366}
+    - target: {fileID: 4942017914454007537, guid: d63d8b8239bcc554fab51602a1a121a9, type: 3}
+      propertyPath: maxExtraDelay
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

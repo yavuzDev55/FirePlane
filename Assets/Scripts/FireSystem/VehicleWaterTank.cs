@@ -56,7 +56,7 @@ public class VehicleWaterTank : MonoBehaviour
     private List<Vector2> pointstoExtinguish = new();
 
     Vector2 lastDropPos;
-    bool hasLastPos;
+    [SerializeField] bool hasLastPos;
     float lastDropTime;
     bool wasLastExtinguish;
 
@@ -131,6 +131,8 @@ public class VehicleWaterTank : MonoBehaviour
             FillWater();
         }
 
+        HandlePendingExtinguishes();
+
         //UI Update
         if (gameScreenUI != null)
         {
@@ -158,7 +160,7 @@ public class VehicleWaterTank : MonoBehaviour
     {
         isExtinguishing = false;
         wasLastExtinguish = true;
-        ExtinguishAlongMovement(); // Son pozisyon için de hasar uygula
+        ExtinguishAlongMovement();
         wasLastExtinguish = false;
         hasLastPos = false;
     }
@@ -219,10 +221,10 @@ public class VehicleWaterTank : MonoBehaviour
         Vector2 p0 = lastDropPos;
         Vector2 p1 = waterDropPoint.position;
         lastDropPos = p1;
-
+        
         float segmentLength = Vector2.Distance(p0, p1);
         float passedTime = Time.time - lastDropTime;
-        if ((segmentLength < 0.2f && passedTime < .1f) || wasLastExtinguish) return;
+        if (segmentLength < 0.2f && passedTime < .1f && !wasLastExtinguish) return;
         lastDropTime = Time.time;
 
         // p0 ve p1'i flat uzaya çevir (Z=0 olduğu için zToY terimi sıfır)
@@ -256,7 +258,7 @@ public class VehicleWaterTank : MonoBehaviour
                 float d = IsoDistance(cellWorld, p0f, p1f);
                 float weight = 1f - (d / halfLength);
                 float damage = Mathf.Lerp(minDamage, maxDamage, weight);
-                float delay = minExtinguishDelay + weight * maxExtraDelay;
+                float delay = minExtinguishDelay + (1f - weight) * maxExtraDelay;
 
 
                 // damage = mesafeye bağlı factor * 
@@ -276,8 +278,6 @@ public class VehicleWaterTank : MonoBehaviour
                 });
             }
         }
-
-        HandlePendingExtinguishes();
     }
 
     void HandlePendingExtinguishes()

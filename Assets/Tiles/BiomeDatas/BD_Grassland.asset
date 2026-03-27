@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   biomeName: Grassland
   isWater: 0
-  fuelValue: 1.5
+  fuelValue: 2
   fireSpreadResistance: 0.2
   maxHeat: 0.7
   burnRate: 0.15

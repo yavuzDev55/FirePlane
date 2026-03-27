@@ -9908,12 +9908,12 @@ MonoBehaviour:
   waterDropPoint: {fileID: 9109233229943386229}
   intakeCollider: {fileID: 6715012355237753100}
   vehicleController: {fileID: 2654152101954069157}
-  halfLength: 2.5
-  maxDamage: 150
-  minDamage: 75
+  halfLength: 3
+  maxDamage: 1.5
+  minDamage: 0.2
   extinguishingPerSecond: 2
   minExtinguishDelay: 0.05
-  maxExtraDelay: 0.25
+  maxExtraDelay: 0.15
   isExtinguishing: 0
   fillRate: 20
   isIntaking: 0

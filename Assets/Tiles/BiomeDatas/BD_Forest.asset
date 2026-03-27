@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   biomeName: Forest
   isWater: 0
-  fuelValue: 2
+  fuelValue: 3
   fireSpreadResistance: 0.1
   maxHeat: 0.9
   burnRate: 0.08
@@ -28,5 +28,5 @@ MonoBehaviour:
   vegetationList:
   - prefab: {fileID: 3843036604728709825, guid: 999350436d042004ab0de4f6087e210f, type: 3}
     spawnWeight: 0.8
-  - prefab: {fileID: 3341976271522070702, guid: bda5879aacc864f478a2adb3500c14d5, type: 3}
+  - prefab: {fileID: 0}
     spawnWeight: 0.2
