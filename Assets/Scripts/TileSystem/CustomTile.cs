@@ -8,7 +8,10 @@ using UnityEngine.Tilemaps;
 public class CustomTile : Tile
 {
     // A reference to the ScriptableObject that holds the biome properties (fuel, resistance).
-    public BiomeData biomeData; 
+    public BiomeData biomeData;
+
+    // A reference to the ScriptableObject that holds the mission properties (mission type).
+    public MissionData missionData;
 
     // The sprite used for rendering this tile on the map and in the palette.
     [Tooltip("The visual representation of this tile.")]

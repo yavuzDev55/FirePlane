@@ -37,6 +37,8 @@ public class FireManager : MonoBehaviour
     public float windStrength = 0f;             // -1 to 1 (affects spread and raging)
     public float ambientMoisture = 0.3f;        // 0-1 (affects ignition)
 
+    public event System.Action OnFireInitialized; // Event for when fire is initialized
+
     [Header("UI")]
     public UIDocument gameScreenUI;
     Label firingCellsLabel;
@@ -228,7 +230,6 @@ public class FireManager : MonoBehaviour
 
     void InitializeFire()
     {
-        Debug.Log("Initializing fire from ignite markers...");
         if (fireStateTilemap == null || igniteMarkerTile == null) return;
 
         BoundsInt bounds = fireStateTilemap.cellBounds;
@@ -246,6 +247,8 @@ public class FireManager : MonoBehaviour
                 }
             }
         }
+
+        OnFireInitialized?.Invoke();
     }
 
     // --- Fire State Updates (Per-Cell) ---

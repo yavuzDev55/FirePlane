@@ -38,10 +38,27 @@ public class VehicleWaterTank : MonoBehaviour
 
     [Header("UI")]
     public UIDocument gameScreenUI;
-    VisualElement backgroundBar;
-    VisualElement fillBar;
-    Label waterTankLabel;
-    public Color[] backgroundColors;
+
+    // Orijinal element referansları — isimler değişmedi
+    VisualElement backgroundBar;  // BarBackground
+    VisualElement fillBar;        // BarFill
+    Label waterTankLabel;         // WaterTankLabel
+
+    // Bar arka plan renkleri: [0]=normal, [1]=extinguishing, [2]=intaking
+    static readonly StyleColor[] bgColors = new StyleColor[]
+    {
+        new StyleColor(new Color(0.078f, 0.078f, 0.196f, 0.85f)),  // koyu lacivert
+        new StyleColor(new Color(0f,     0.118f, 0.275f, 0.90f)),  // koyu mavi
+        new StyleColor(new Color(0f,     0.157f, 0.102f, 0.90f)),  // koyu yeşil
+    };
+
+    // Bar dolgu renkleri: [0]=normal, [1]=extinguishing, [2]=intaking
+    static readonly StyleColor[] fillColors = new StyleColor[]
+    {
+        new StyleColor(new Color(0f,    0.541f, 0.804f)),  // #008ACE mavi
+        new StyleColor(new Color(0f,    0.820f, 1f)),      // #00D1FF cyan
+        new StyleColor(new Color(0.196f,0.878f, 0.447f)),  // #32E072 yeşil
+    };
 
     private struct PendingExtinguish
     {
@@ -133,22 +150,7 @@ public class VehicleWaterTank : MonoBehaviour
 
         HandlePendingExtinguishes();
 
-        //UI Update
-        if (gameScreenUI != null)
-        {
-            if (backgroundBar == null || fillBar == null || waterTankLabel == null)
-            {
-                backgroundBar = gameScreenUI.rootVisualElement.Q<VisualElement>("BarBackground");
-                fillBar = gameScreenUI.rootVisualElement.Q<VisualElement>("BarFill");
-                waterTankLabel = gameScreenUI.rootVisualElement.Q<Label>("WaterTankLabel");
-            }
-
-            backgroundBar.style.backgroundColor = isExtinguishing ? backgroundColors[1] : backgroundColors[0];
-            backgroundBar.style.backgroundColor = isIntaking ? backgroundColors[2] : backgroundBar.style.backgroundColor;
-            float fillAmount = currentWater / maxWater;
-            fillBar.style.width = Length.Percent(fillAmount * 100f);
-            waterTankLabel.text = $"Water: % {fillAmount * 100:F1}";
-        }
+        UpdateUI();
     }
 
     void StartExtinguishing()
@@ -328,6 +330,37 @@ public class VehicleWaterTank : MonoBehaviour
 
         currentWater += fillRate * Time.deltaTime;
         currentWater = Mathf.Min(currentWater, maxWater);
+    }
+
+
+    void UpdateUI()
+    {
+        if (gameScreenUI != null)
+        {
+            // Referansları gerektiğinde al (orijinal davranış)
+            if (backgroundBar == null || fillBar == null || waterTankLabel == null)
+            {
+                backgroundBar = gameScreenUI.rootVisualElement.Q<VisualElement>("BarBackground");
+                fillBar = gameScreenUI.rootVisualElement.Q<VisualElement>("BarFill");
+                waterTankLabel = gameScreenUI.rootVisualElement.Q<Label>("WaterTankLabel");
+            }
+
+            // Durum indexi
+            int idx = isExtinguishing ? 1 : isIntaking ? 2 : 0;
+
+            // Arka plan rengi
+            backgroundBar.style.backgroundColor = bgColors[idx];
+
+            // Dolgu rengi
+            fillBar.style.backgroundColor = fillColors[idx];
+
+            // Bar genişliği — orijinaldeki gibi
+            float fillAmount = currentWater / maxWater;
+            fillBar.style.width = Length.Percent(fillAmount * 100f);
+
+            // Label
+            waterTankLabel.text = $"Water: % {fillAmount * 100:F1}";
+        }
     }
 
     void OnDrawGizmos()

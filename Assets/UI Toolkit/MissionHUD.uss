@@ -1,0 +1,139 @@
+/* ══════════════════════════════════════════════════════
+   MISSION HUD  (değişmedi)
+══════════════════════════════════════════════════════ */
+
+.mission-hud {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 26%;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.group-card {
+    background-color: rgba(0, 0, 0, 0.65);
+    border-left-width: 4px;
+    border-left-color: rgba(255, 255, 255, 0.6);
+    border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px;
+    border-top-color: rgba(255,255,255,0.08);
+    border-right-color: rgba(255,255,255,0.08);
+    border-bottom-color: rgba(255,255,255,0.08);
+    padding: 14px 16px;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.group-name {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 16px;
+    -unity-font-style: bold;
+    letter-spacing: 1px;
+    -unity-text-align: upper-left;
+}
+
+.divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.18);
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.objective-list { flex-direction: column; gap: 6px; }
+
+.objective-row { flex-direction: row; align-items: center; gap: 10px; }
+
+.objective-icon {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 15px;
+    width: 18px;
+    -unity-text-align: upper-center;
+}
+
+.objective-icon.completed { color: rgba(120, 220, 120, 0.9); }
+
+.objective-info { flex-direction: column; flex-grow: 1; }
+
+.objective-description {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    white-space: normal;
+}
+
+.objective-description.completed { color: rgba(255, 255, 255, 0.35); }
+
+.objective-progress {
+    color: rgba(255, 200, 80, 0.9);
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.inner-group {
+    padding-left: 12px;
+    border-left-width: 1px;
+    border-left-color: rgba(255, 255, 255, 0.15);
+    margin-top: 4px;
+}
+
+/* ══════════════════════════════════════════════════════
+   ORTAK HUD KART  —  FireStateHUD ve WaterTankHUD için
+══════════════════════════════════════════════════════ */
+
+.hud-card {
+    background-color: rgba(0, 0, 0, 0.65);
+    border-left-width: 4px;
+    border-left-color: rgba(0, 138, 205, 0.85);
+    border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px;
+    border-top-color: rgba(255,255,255,0.06);
+    border-right-color: rgba(255,255,255,0.06);
+    border-bottom-color: rgba(255,255,255,0.06);
+    padding: 14px 16px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Fire kartı — sol kenar kırmızı */
+.hud-card--fire {
+    border-left-color: rgba(220, 50, 10, 0.9);
+}
+
+.hud-section-title {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 11px;
+    -unity-font-style: bold;
+    letter-spacing: 2px;
+    -unity-text-align: upper-left;
+}
+
+.hud-divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Ortak label boyutu */
+.hud-label {
+    font-size: 18px;
+    -unity-font-style: bold;
+    -unity-text-align: upper-left;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.85);
+}
+
+.hud-label--fire  { color: rgb(255, 75, 25); }
+.hud-label--ash   { color: rgba(175, 160, 145, 0.9); }
+.hud-label--water { color: rgb(0, 160, 220); }
+
+
+.objective-icon.failed {
+    color: rgba(220, 80, 80, 0.9);
+}
+
+.objective-description.failed {
+    color: rgba(220, 80, 80, 0.6);
+    /* isteğe bağlı — üzeri çizgili */
+    -unity-text-decoration: line-through;
+}
+
+.objective-progress.failed {
+    color: rgba(220, 80, 80, 0.85);
+}
