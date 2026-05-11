@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 758a356169d972f4bbb7bb4ed767e6ee, type: 3}
-  m_Name: IgnitingTile
+  m_Name: CT_DryForest
   m_EditorClassIdentifier: Assembly-CSharp::CustomTile
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 0.87228465, b: 0, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
@@ -34,6 +34,6 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  biomeData: {fileID: 0}
+  biomeData: {fileID: 11400000, guid: b127beba25dc51f458fd2b00eb7a7126, type: 2}
   missionData: {fileID: 0}
-  tileSprite: {fileID: 8257572708423224303, guid: 457da5e858be4bf41aa32d52cc79efe0, type: 3}
+  tileSprite: {fileID: 4085883262365012893, guid: 183a22ef93311c641abd812b5964a105, type: 3}

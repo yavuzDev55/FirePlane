@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c044e9b34bb9f5f478ae06505983b216, type: 3}
-  m_Name: BD_Forest
-  m_EditorClassIdentifier: Assembly-CSharp::TileData
-  biomeName: Forest
+  m_Name: BD_DryForest
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeData
+  biomeName: Dry Pine Forest
   isWater: 0
   fuelValue: 3
   fireSpreadResistance: 0.1
@@ -26,7 +26,7 @@ MonoBehaviour:
   ragingMaxDuration: 2
   canSpawnVegetation: 1
   vegetationList:
-  - prefab: {fileID: 3843036604728709825, guid: 399c885a9d40f3e44b39f1e2470fa464, type: 3}
-    spawnWeight: 0.6
+  - prefab: {fileID: 3843036604728709825, guid: 57ffb7c4703d2224a8467f0a1ea74b5f, type: 3}
+    spawnWeight: 0.7
   - prefab: {fileID: 0}
-    spawnWeight: 0.4
+    spawnWeight: 0.3
