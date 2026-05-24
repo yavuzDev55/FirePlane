@@ -9912,8 +9912,8 @@ MonoBehaviour:
   maxDamage: 1.5
   minDamage: 0.2
   extinguishingPerSecond: 2
-  minExtinguishDelay: 0.05
-  maxExtraDelay: 0.15
+  minExtinguishDelay: 0.15
+  maxExtraDelay: 0.45
   isExtinguishing: 0
   fillRate: 20
   isIntaking: 0
@@ -9922,10 +9922,7 @@ MonoBehaviour:
   waterConsumptionRate: 10
   dropWaterAction: {fileID: -6720473173134734144, guid: edcc10da1fae143428a2a93548aa3e34, type: 3}
   gameScreenUI: {fileID: 0}
-  backgroundColors:
-  - {r: 0.78867924, g: 0.78867924, b: 0.78867924, a: 1}
-  - {r: 0.6075471, g: 0.29866812, b: 0, a: 1}
-  - {r: 0.059145615, g: 0.4415095, b: 0.43887252, a: 1}
+  hasLastPos: 0
 --- !u!1 &4695189150591591495
 GameObject:
   m_ObjectHideFlags: 0

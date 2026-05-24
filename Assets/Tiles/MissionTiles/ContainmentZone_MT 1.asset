@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ContainmentZone_MT 1
   m_EditorClassIdentifier: Assembly-CSharp::CustomTile
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.99069935, g: 0.20943397, b: 1, a: 0.5882353}
+  m_Color: {r: 0.99069935, g: 0.20943397, b: 1, a: 0.39215687}
   m_Transform:
     e00: 1
     e01: 0

@@ -36,4 +36,4 @@ MonoBehaviour:
   m_ColliderType: 1
   biomeData: {fileID: 11400000, guid: b127beba25dc51f458fd2b00eb7a7126, type: 2}
   missionData: {fileID: 0}
-  tileSprite: {fileID: 4921196727309173699, guid: d7fd81ce8a01e534aa03322231746185, type: 3}
+  tileSprite: {fileID: -2945251233117271083, guid: 8c85c26ddd74e21489b3fbd79110252a, type: 3}

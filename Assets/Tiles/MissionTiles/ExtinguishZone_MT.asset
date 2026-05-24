@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExtinguishZone_MT
   m_EditorClassIdentifier: Assembly-CSharp::CustomTile
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.37828445, g: 0, b: 1, a: 0.5882353}
+  m_Color: {r: 0.40383977, g: 0.027660921, b: 0.97735846, a: 0.39215687}
   m_Transform:
     e00: 1
     e01: 0

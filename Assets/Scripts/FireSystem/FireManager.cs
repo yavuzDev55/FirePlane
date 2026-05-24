@@ -39,6 +39,9 @@ public class FireManager : MonoBehaviour
 
     public event System.Action OnFireInitialized; // Event for when fire is initialized
 
+    [Header("Visual")]
+    public TileVisualCoordinator visualCoordinator;
+
     [Header("UI")]
     public UIDocument gameScreenUI;
     Label firingCellsLabel;
@@ -396,6 +399,14 @@ public class FireManager : MonoBehaviour
             // Drying process
             data.wetness = Mathf.Max(0, data.wetness - biome.dryingRate * updateInterval);
 
+            // --- YENİ EKLEME ---
+            // Nem azalmaya devam ettiği sürece koordinatı kirli/aktif listesinde tut ki 
+            // shader her kare azalan nemi okuyup rengi pürüzsüzce açabilsin.
+            if (data.wetness > 0)
+            {
+                visualCoordinator?.MarkDirty(cellPos);
+            }
+
             // Return to normal when dry
             if (data.wetness <= 0)
             {
@@ -560,11 +571,17 @@ public class FireManager : MonoBehaviour
             {
                 data.wetness = Mathf.Min(1f, data.wetness + remainingForWetness);
             }
+
+            // Su sıkıldığı için güncel nem/ısı verisini gönder
+            visualCoordinator?.MarkDirty(cellPos);
         }
         else if(data.state == FireState.NORMAL || data.state == FireState.WET)
         {
             if (!CanCellCatchFire(cellPos)) return;
             data.wetness = Mathf.Min(1f, data.wetness + extinguishAmount);
+
+            // Su sıkıldığı için güncel nem/ısı verisini gönder
+            visualCoordinator?.MarkDirty(cellPos);
         }
     }
 
@@ -610,6 +627,8 @@ public class FireManager : MonoBehaviour
         };
 
         fireStateTilemap.SetTile(cellPos, tile);
+
+        visualCoordinator?.MarkDirty(cellPos);
     }
 
     // --- Object Interaction ---
