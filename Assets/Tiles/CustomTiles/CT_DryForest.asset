@@ -37,3 +37,7 @@ MonoBehaviour:
   biomeData: {fileID: 11400000, guid: b127beba25dc51f458fd2b00eb7a7126, type: 2}
   missionData: {fileID: 0}
   tileSprite: {fileID: -2945251233117271083, guid: 8c85c26ddd74e21489b3fbd79110252a, type: 3}
+  overlayColor: {r: 0.6392157, g: 0.39607847, b: 0.14117648, a: 1}
+  overlayIntensity: 0.6
+  overlayBlend: 0.5
+  textureIndex: 2

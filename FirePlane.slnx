@@ -53,11 +53,11 @@
   <Project Path="Unity.Rider.Editor.csproj" />
   <Project Path="Unity.VisualScripting.State.csproj" />
   <Project Path="Unity.InternalAPIEditorBridge.001.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="UnityEditor.UI.csproj" />
   <Project Path="Unity.2D.Sprite.Editor.csproj" />
   <Project Path="Unity.Multiplayer.Center.Common.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
   <Project Path="Unity.2D.Tilemap.Extras.csproj" />
   <Project Path="Unity.2D.Animation.Runtime.csproj" />
@@ -78,6 +78,7 @@
   <Project Path="Unity.2D.Sprite.AIIntegration.Editor.csproj" />
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Config.Runtime.csproj" />
   <Project Path="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj" />

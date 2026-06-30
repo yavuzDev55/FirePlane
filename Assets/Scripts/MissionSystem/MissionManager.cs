@@ -25,6 +25,10 @@ public class MissionManager : MonoBehaviour
 
     public event System.Action OnMissionsActivated;
 
+    [Header("Visual")]
+    public TilemapTextureBuilder textureBuilder;
+    public MissionOverlayRenderer missionOverlay;
+
     void Start()
     {
         ReadZoneMap();
@@ -147,11 +151,45 @@ public class MissionManager : MonoBehaviour
     {
         foreach (var group in runtimeGroups)
         {
-            if (!group.IsCompleted)
-                group.Tick();
+            if (group.IsCompleted) continue;
 
+            group.Tick();
+
+            // Grup içindeki node'ları kontrol et
+            CheckGroupNodes(group);
+        }
+    }
+
+    void CheckGroupNodes(MissionGroup group)
+    {
+        foreach (var node in group.nodes)
+        {
+            if (node is MissionObjective objective)
+            {
+                if (objective.IsCompleted && !objective.IsFailed)
+                    OnObjectiveCompleted(objective.missionData);
+
+                else if (objective.IsFailed)
+                    OnObjectiveFailed(objective.missionData);
+            }
+            else if (node is MissionGroup innerGroup)
+            {
+                CheckGroupNodes(innerGroup); // iç gruplar için özyinelemeli
+            }
         }
     }
 
     public List<MissionGroup> GetRuntimeGroups() => runtimeGroups;
+
+    void OnObjectiveCompleted(MissionData mission)
+    {
+        textureBuilder.UpdateMissionState(mission, MissionVisualState.Completed);
+        missionOverlay.UpdateTexture(textureBuilder.MissionTexture);
+    }
+
+    void OnObjectiveFailed(MissionData mission)
+    {
+        textureBuilder.UpdateMissionState(mission, MissionVisualState.Failed);
+        missionOverlay.UpdateTexture(textureBuilder.MissionTexture);
+    }
 }
